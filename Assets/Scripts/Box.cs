@@ -52,10 +52,11 @@ public class Box : MonoBehaviour
             playerGrabSystem.ObjectName = gameObject.name;
         }
         
-        if(playerGrabSystem.HasObject == true && distance <= pickUpDistance)
-        {          
-            Raycast();
-        }
+        //Metoda odpowiedzialna za odkładanie skrzynek na inne skrzynki (Niepotrzebne)
+        //if(playerGrabSystem.HasObject == true && distance <= pickUpDistance)
+        //{          
+        //    Raycast();
+        //}
     }
 
     IEnumerator ChangeColor()
