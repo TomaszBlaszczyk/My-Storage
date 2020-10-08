@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnBoxes : MonoBehaviour
+public class SpawnRocksAndGems : MonoBehaviour
 {
     public SpawnPoint[] spawnPoints;
     private GameObject[] boxes;
 
-    public GameObject box_0;
+    public GameObject box_0; //Tu będą odwołania do nowych obiektów (skały i kryształy)
     public GameObject box_1;
     public GameObject box_2;
     public GameObject box_3;
@@ -45,9 +45,9 @@ public class SpawnBoxes : MonoBehaviour
         BoxesToSpawn = PlayerPrefs.GetInt("Objects");
         spawnPoints = FindObjectsOfType<SpawnPoint>();
         inGameMenu = FindObjectOfType<InGameMenu>();
-        boxes = new GameObject[10] {box_0, box_1, box_2, box_3, box_4, box_5, box_6, box_7, box_8, box_9};
-        
-        if(PlayerPrefs.GetInt("Challenge Type") == 2)
+        boxes = new GameObject[10] { box_0, box_1, box_2, box_3, box_4, box_5, box_6, box_7, box_8, box_9 };
+
+        if (PlayerPrefs.GetInt("Challenge Type") == 2)
         {
             boxImage.enabled = true;
             spawnedBoxes.enabled = true;
@@ -62,12 +62,12 @@ public class SpawnBoxes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canSpawn == true && !gameFinished)
+        if (canSpawn == true && !gameFinished)
         {
             StartCoroutine(SpawnBox());
-        }       
+        }
 
-        if(BoxesToSpawn <= 0 && PlayerPrefs.GetInt("Challenge Type") == 2)
+        if (BoxesToSpawn <= 0 && PlayerPrefs.GetInt("Challenge Type") == 2)
         {
             //Debug.LogWarning("You Lost!");
             inGameMenu.GameOver();
@@ -77,7 +77,7 @@ public class SpawnBoxes : MonoBehaviour
 
         spawnedBoxes.text = BoxesToSpawn.ToString();
 
-        if(BoxesToSpawn <= 10)
+        if (BoxesToSpawn <= 10)
         {
             spawnedBoxes.color = Color.red;
         }
@@ -86,7 +86,7 @@ public class SpawnBoxes : MonoBehaviour
             spawnedBoxes.color = Color.green;
         }
 
-        if(BoxesToSpawn < 0)
+        if (BoxesToSpawn < 0)
         {
             BoxesToSpawn = 0;
         }
