@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Rack1Controller : MonoBehaviour
+public class Rack1Controller : ActionsContainer
 {
     public GameObject box0_0;
     public GameObject box0_1;
@@ -40,48 +40,49 @@ public class Rack1Controller : MonoBehaviour
     private int currentType;
     private char currentIndex;
 
-    private int score = 1;
-    private float distance;
-    private float useRackDistance = 1.5f;
+    //private int score = 1;
+    //private float distance;
+    //private float useRackDistance = 1.5f;
 
-    private PlayerGrabSystem playerGrabSystem;
-    private Renderer rack1Renderer;
-    private bool change = true;
+    //private PlayerGrabSystem playerGrabSystem;
+    //private Renderer rack1Renderer;
+    //private bool change = true;
+    //private bool ready;
 
-    private ScoreBoard scoreBoard;
-    private bool ready;
-    public Animator playerAnimator;
-    public GameObject fireworks;
+    //private ScoreBoard scoreBoard;
+    //public Animator playerAnimator;
+    //public GameObject fireworks;
 
-    public AudioSource rackAudio;
-    public AudioSource dropOnRackAudio;
-    private SpawnBoxes spawnBoxes;
+    //public AudioSource rackAudio;
+    //public AudioSource dropOnRackAudio;
+    //private SpawnBoxes spawnBoxes;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerGrabSystem = FindObjectOfType<PlayerGrabSystem>();
-        rack1Renderer = GetComponent<Renderer>();
-        scoreBoard = FindObjectOfType<ScoreBoard>();
-        spawnBoxes = FindObjectOfType<SpawnBoxes>();
-        fireworks.SetActive(false);
+        //playerGrabSystem = FindObjectOfType<PlayerGrabSystem>();
+        //rack1Renderer = GetComponent<Renderer>();
+        //scoreBoard = FindObjectOfType<ScoreBoard>();
+        //spawnBoxes = FindObjectOfType<SpawnBoxes>();
+        //fireworks.SetActive(false);
         GetRandomBoxType();
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, playerGrabSystem.gameObject.transform.position);
+        //distance = Vector3.Distance(transform.position, playerGrabSystem.gameObject.transform.position);
 
-        if(playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
-            distance <= useRackDistance && change == true && ready == false)
-        {
-            StartCoroutine(ChangeColor());
-        }
+        //if(playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
+        //    distance <= useRackDistance && change == true && ready == false)
+        //{
+        //    StartCoroutine(ChangeColor());
+        //}
 
-        if (score == 3)
+        //ify calkowicie rozne w obydwoch
+        if (Score == 3)
         {
-            score = 1;
+            Score = 1;
             ready = true;
 
             rackAudio.Play();
@@ -100,16 +101,17 @@ public class Rack1Controller : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
-            distance <= useRackDistance && ready == false)
-        {
-            playerGrabSystem.gameObject.transform.LookAt(transform.position);
-            playerAnimator.ResetTrigger("IdleWithBox");
-            playerAnimator.ResetTrigger("RunWithBox");
-            playerAnimator.SetTrigger("DropRack");
-            dropOnRackAudio.Play();
-            playerGrabSystem.DropObject();
+        //if (playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
+        //    distance <= useRackDistance && ready == false)
+        //{
+        //    playerGrabSystem.gameObject.transform.LookAt(transform.position);
+        //    playerAnimator.ResetTrigger("IdleWithBox");
+        //    playerAnimator.ResetTrigger("RunWithBox");
+        //    playerAnimator.SetTrigger("DropRack");
+        //    dropOnRackAudio.Play();
+        //    playerGrabSystem.DropObject();
 
+            //switch rozny -> do podfunkcji w klasie dziedziczacej?
             switch (currentType)
             {
                 case 0:
@@ -218,10 +220,11 @@ public class Rack1Controller : MonoBehaviour
                     break;
             }
 
-            spawnBoxes.BoxesToSpawn++;
+            //spawnBoxes.BoxesToSpawn++;
         }
     }
 
+//tylko w rack1
     private void GetRandomBoxType()
     {
         currentType = Random.Range(0, 9);
@@ -268,21 +271,22 @@ public class Rack1Controller : MonoBehaviour
         }
     }
 
-    IEnumerator ChangeColor()
-    {
-        change = false;
-        rack1Renderer.material.color = Color.cyan;
-        yield return new WaitForSeconds(0.5f);
-        rack1Renderer.material.color = Color.white;
-        yield return new WaitForSeconds(0.5f);
-        change = true;
-    }
-
+    //IEnumerator ChangeColor()
+    //{
+    //    change = false;
+    //    rack1Renderer.material.color = Color.cyan;
+    //    yield return new WaitForSeconds(0.5f);
+    //    rack1Renderer.material.color = Color.white;
+    //    yield return new WaitForSeconds(0.5f);
+    //    change = true;
+    //}
+    
+    //tylko w rack1
     IEnumerator WaitBeforeChangeType()
     {
         yield return new WaitForSecondsRealtime(3f);
     }
-
+    //tylko w rack1
     private void DisableAll()
     {
         box0_0.SetActive(false);
