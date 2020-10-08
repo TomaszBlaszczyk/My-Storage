@@ -7906,6 +7906,56 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &363347844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363347846}
+  - component: {fileID: 363347845}
+  m_Layer: 0
+  m_Name: Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &363347845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363347844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3a469e789b33c4b8fdbc8f5f524427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: 0
+  scoreBoard: {fileID: 0}
+  playerAnimator: {fileID: 8392367674328995873}
+  fireworks: {fileID: 5741902213574010669}
+  rackAudio: {fileID: 1372833198}
+  dropOnRackAudio: {fileID: 734509046}
+  spawnBoxes: {fileID: 0}
+--- !u!4 &363347846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363347844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.42, y: -0.94966984, z: 13.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 57
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &364006625
 GameObject:
   m_ObjectHideFlags: 0
@@ -10003,6 +10053,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87a5723df6cb0b4087030b05ac89993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ready: 0
+  scoreBoard: {fileID: 0}
+  playerAnimator: {fileID: 8392367674328995873}
+  fireworks: {fileID: 5741902213574010669}
+  rackAudio: {fileID: 1372833198}
+  dropOnRackAudio: {fileID: 734509046}
+  spawnBoxes: {fileID: 0}
   box0_0: {fileID: 7295005718837500343}
   box0_1: {fileID: 1659650656}
   box0_2: {fileID: 430285533}
@@ -10027,10 +10084,6 @@ MonoBehaviour:
   box8_0: {fileID: 7259395872943804756}
   box8_1: {fileID: 1305396095}
   box8_2: {fileID: 1972980836}
-  playerAnimator: {fileID: 8392367674328995873}
-  fireworks: {fileID: 5741902213574010669}
-  rackAudio: {fileID: 1372833198}
-  dropOnRackAudio: {fileID: 734509046}
 --- !u!1 &624998831
 GameObject:
   m_ObjectHideFlags: 0
@@ -36300,6 +36353,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2a7271025ed5a428693589ba5f1090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ready: 0
+  scoreBoard: {fileID: 0}
+  playerAnimator: {fileID: 8392367674328995873}
+  fireworks: {fileID: 1465364354}
+  rackAudio: {fileID: 1372833198}
+  dropOnRackAudio: {fileID: 734509046}
+  spawnBoxes: {fileID: 0}
   box_0: {fileID: 4037078906169104208}
   box_1: {fileID: 2018538829}
   box_2: {fileID: 1189412508}
@@ -36309,10 +36369,6 @@ MonoBehaviour:
   box_6: {fileID: 1346028043}
   box_7: {fileID: 482545220}
   box_8: {fileID: 1907975143}
-  playerAnimator: {fileID: 8392367674328995873}
-  fireworks: {fileID: 1465364354}
-  rackAudio: {fileID: 1372833198}
-  dropOnRackAudio: {fileID: 734509046}
 --- !u!4 &1480365337
 Transform:
   m_ObjectHideFlags: 0
@@ -86145,7 +86201,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86212,7 +86267,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86279,7 +86333,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86413,7 +86466,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f63c576739a709747a1a571260d4fabd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86480,7 +86532,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9f3080141f1f64197825663e067f94f8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86547,7 +86598,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c50d77affeb31e14c9c062c282f13fc8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -12,15 +12,17 @@ public class ActionsContainer : MonoBehaviour
     private PlayerGrabSystem playerGrabSystem;
     private Renderer objectRenderer; //rack2 rack1 renderer to samo inne nazewnictwo
     private bool change = true;
-    private bool ready;
+    public bool ready;
 
-    private ScoreBoard scoreBoard;
+    [HideInInspector]
+    public ScoreBoard scoreBoard;
     public Animator playerAnimator;
     public GameObject fireworks;
 
     public AudioSource rackAudio;
     public AudioSource dropOnRackAudio;
-    private SpawnBoxes spawnBoxes;
+    [HideInInspector]
+    public SpawnBoxes spawnBoxes;
 
     void Start()
     {
@@ -29,9 +31,8 @@ public class ActionsContainer : MonoBehaviour
         scoreBoard = FindObjectOfType<ScoreBoard>();
         spawnBoxes = FindObjectOfType<SpawnBoxes>();
         fireworks.SetActive(false);
-        //w rack1 jest tutaj dodatkowo getRandomBoxType
     }
-    void Update() //moze byc update tez w klasie dziedziczacej?
+    void Update()
     {
         distance = Vector3.Distance(transform.position, playerGrabSystem.gameObject.transform.position);
 
@@ -42,7 +43,7 @@ public class ActionsContainer : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public bool BoxAwayAnimations()
     {
         if (playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == '9' &&
             distance <= useRackDistance && ready == false)
@@ -53,15 +54,12 @@ public class ActionsContainer : MonoBehaviour
             playerAnimator.SetTrigger("DropRack");
             dropOnRackAudio.Play();
             playerGrabSystem.DropObject();
-
-            //switch w zaleznosci od klasy
-           
-
-            spawnBoxes.BoxesToSpawn++;
+            return true;
         }
+        return false;
     }
 
-    IEnumerator ChangeColor()
+    protected IEnumerator ChangeColor()
     {
         change = false;
         objectRenderer.material.color = Color.cyan;
@@ -70,4 +68,5 @@ public class ActionsContainer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         change = true;
     }
+
 }

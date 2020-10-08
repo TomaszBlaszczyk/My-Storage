@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Rack1Controller : ActionsContainer
 {
@@ -40,46 +40,13 @@ public class Rack1Controller : ActionsContainer
     private int currentType;
     private char currentIndex;
 
-    //private int score = 1;
-    //private float distance;
-    //private float useRackDistance = 1.5f;
-
-    //private PlayerGrabSystem playerGrabSystem;
-    //private Renderer rack1Renderer;
-    //private bool change = true;
-    //private bool ready;
-
-    //private ScoreBoard scoreBoard;
-    //public Animator playerAnimator;
-    //public GameObject fireworks;
-
-    //public AudioSource rackAudio;
-    //public AudioSource dropOnRackAudio;
-    //private SpawnBoxes spawnBoxes;
-
-    // Start is called before the first frame update
     void Start()
     {
-        //playerGrabSystem = FindObjectOfType<PlayerGrabSystem>();
-        //rack1Renderer = GetComponent<Renderer>();
-        //scoreBoard = FindObjectOfType<ScoreBoard>();
-        //spawnBoxes = FindObjectOfType<SpawnBoxes>();
-        //fireworks.SetActive(false);
         GetRandomBoxType();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //distance = Vector3.Distance(transform.position, playerGrabSystem.gameObject.transform.position);
-
-        //if(playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
-        //    distance <= useRackDistance && change == true && ready == false)
-        //{
-        //    StartCoroutine(ChangeColor());
-        //}
-
-        //ify calkowicie rozne w obydwoch
         if (Score == 3)
         {
             Score = 1;
@@ -101,135 +68,126 @@ public class Rack1Controller : ActionsContainer
 
     private void OnMouseDown()
     {
-        //if (playerGrabSystem.HasObject == true && playerGrabSystem.ObjectIndex == currentIndex && 
-        //    distance <= useRackDistance && ready == false)
-        //{
-        //    playerGrabSystem.gameObject.transform.LookAt(transform.position);
-        //    playerAnimator.ResetTrigger("IdleWithBox");
-        //    playerAnimator.ResetTrigger("RunWithBox");
-        //    playerAnimator.SetTrigger("DropRack");
-        //    dropOnRackAudio.Play();
-        //    playerGrabSystem.DropObject();
-
-            //switch rozny -> do podfunkcji w klasie dziedziczacej?
+        if (BoxAwayAnimations())
+        {
             switch (currentType)
             {
                 case 0:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box0_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box0_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 1:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box1_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box1_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 2:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box2_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box2_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 3:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box3_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box3_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 5:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box5_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box5_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 6:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box6_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box6_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 7:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box7_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box7_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
                 case 8:
-                    switch (score)
+                    switch (Score)
                     {
                         case 1:
                             box8_1.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                         case 2:
                             box8_2.SetActive(true);
-                            score++;
+                            Score++;
                             break;
                     }
                     break;
             }
-
-            //spawnBoxes.BoxesToSpawn++;
+            spawnBoxes.BoxesToSpawn++;
         }
     }
 
-//tylko w rack1
+
+    //tylko w rack1
     private void GetRandomBoxType()
     {
-        currentType = Random.Range(0, 9);
+        currentType = UnityEngine.Random.Range(0, 9);
 
-        if(currentType == 4)
+        if (currentType == 4)
         {
             currentType = 5;
         }
@@ -271,22 +229,11 @@ public class Rack1Controller : ActionsContainer
         }
     }
 
-    //IEnumerator ChangeColor()
-    //{
-    //    change = false;
-    //    rack1Renderer.material.color = Color.cyan;
-    //    yield return new WaitForSeconds(0.5f);
-    //    rack1Renderer.material.color = Color.white;
-    //    yield return new WaitForSeconds(0.5f);
-    //    change = true;
-    //}
-    
-    //tylko w rack1
     IEnumerator WaitBeforeChangeType()
     {
         yield return new WaitForSecondsRealtime(3f);
     }
-    //tylko w rack1
+
     private void DisableAll()
     {
         box0_0.SetActive(false);
