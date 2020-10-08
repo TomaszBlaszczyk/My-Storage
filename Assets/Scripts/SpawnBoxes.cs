@@ -69,7 +69,6 @@ public class SpawnBoxes : MonoBehaviour
 
         if(BoxesToSpawn <= 0 && PlayerPrefs.GetInt("Challenge Type") == 2)
         {
-            //Debug.LogWarning("You Lost!");
             inGameMenu.GameOver();
             spawnedBoxes.enabled = false;
             BoxesToSpawn = PlayerPrefs.GetInt("Objects");

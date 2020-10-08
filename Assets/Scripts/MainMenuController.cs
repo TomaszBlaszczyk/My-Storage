@@ -33,7 +33,7 @@ public class MainMenuController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
+        Screen.orientation = ScreenOrientation.Landscape;
     }
 
     void Start()
